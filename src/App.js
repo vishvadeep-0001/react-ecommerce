@@ -1,55 +1,67 @@
-import React from 'react';
-import './App.css';
-import Home from "./pages/Home"
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
-
+import React from "react";
+import "./App.css";
 import {
   createBrowserRouter,
   RouterProvider,
   Route,
   Link,
 } from "react-router-dom";
-import CartPage from './pages/CartPage';
-import Checkout from './pages/Checkout';
-import ProductDetailPage from './ProductDetailPage';
+import Protected from "./features/auth/components/Protected";
+import Home from "./pages/Home";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
 
-
+import CartPage from "./pages/CartPage";
+import Checkout from "./pages/Checkout";
+import ProductDetailPage from "./ProductDetailPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>,
+    element: (
+      <Protected>
+        <Home />
+      </Protected>
+    ),
   },
   {
     path: "/login",
-    element: <LoginPage/>
+    element: <LoginPage />,
   },
   {
     path: "/signup",
-    element: <SignupPage/>
+    element: <SignupPage />,
   },
   {
     path: "/cart",
-    element: <CartPage/>
+    element: (
+      <Protected>
+        <CartPage />
+      </Protected>
+    ),
   },
   {
     path: "/checkout",
-    element: <Checkout/>
+    element: (
+      <Protected>
+        <Checkout />
+      </Protected>
+    ),
   },
   {
     path: "/productdetail/:id",
-    element: <ProductDetailPage/>
+    element: (
+      <Protected>
+        <ProductDetailPage />
+      </Protected>
+    ),
   },
 ]);
-
-
-
 
 function App() {
   return (
     <>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </>
   );
 }
