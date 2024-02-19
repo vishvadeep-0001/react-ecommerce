@@ -397,7 +397,7 @@ function Checkout() {
                           <div>
                             <div className="flex justify-between text-base font-medium text-gray-900">
                               <h3>
-                                <a href={product.href}>{product.name}</a>
+                                <Link href={product.href}>{product.name}</Link>
                               </h3>
                               <p className="ml-4">{product.price}</p>
                             </div>
