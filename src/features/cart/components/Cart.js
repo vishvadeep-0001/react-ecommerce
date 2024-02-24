@@ -3,7 +3,7 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { deleteItemFromCartAsync, selectItems, updateCartAsync } from "../cartSlice";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 export function Cart() {
@@ -27,6 +27,7 @@ export function Cart() {
 
   return (
     <>
+    {!items.length > 0 && <Navigate to="/" replace={true}></Navigate>}
       <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
           <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
