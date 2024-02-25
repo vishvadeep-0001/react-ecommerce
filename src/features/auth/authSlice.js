@@ -14,14 +14,6 @@ export const createUserAsync = createAsyncThunk(
     return response.data;
   }
 );
-// update user address
-export const updateUserAsync = createAsyncThunk(
-  "user/updateUser",
-  async (update) => {
-    const response = await updateUser(update);
-    return response.data;
-  }
-);
 
 export const checkUserAsync = createAsyncThunk(
   "user/checkUser",
@@ -59,13 +51,7 @@ export const authSlice  = createSlice({
         state.status = "idle";
         state.error = action.error;
       })
-      .addCase(updateUserAsync.pending, (state, action) => {
-        state.status = "loading";
-      })
-      .addCase(updateUserAsync.fulfilled, (state, action) => {
-        state.status = "idle";
-        state.loggedInUser = action.payload;
-      })
+      
   },
 });
 

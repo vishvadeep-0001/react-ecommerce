@@ -8,12 +8,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import {
-  selectLoggedInUser,
-  updateUserAsync,
-} from "../features/auth/authSlice";
-import { createOrderAsync, selectCurrentOrder } from "../features/order/orderSlice";
-
-
+  createOrderAsync,
+  selectCurrentOrder,
+} from "../features/order/orderSlice";
+import { SelectUserInfo, updateUserAsync } from "../features/user/userSlice";
 
 
 function Checkout() {
@@ -25,7 +23,8 @@ function Checkout() {
     formState: { errors },
   } = useForm();
 
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(SelectUserInfo);
+  console.log(user)
   const items = useSelector(selectItems);
   const currentOrder = useSelector(selectCurrentOrder);
 
@@ -65,7 +64,7 @@ function Checkout() {
       user,
       paymentMethod,
       selectedAddress,
-      status: "pending"  // other status can be delivered
+      status: "pending", // other status can be delivered
     };
     dispatch(createOrderAsync(order));
   };
@@ -73,7 +72,12 @@ function Checkout() {
   return (
     <>
       {!items.length > 0 && <Navigate to="/" replace={true}></Navigate>}
-      {currentOrder && <Navigate to={`/ordersuccess/${currentOrder.id}`} replace={true}></Navigate>}
+      {currentOrder && (
+        <Navigate
+          to={`/ordersuccess/${currentOrder.id}`}
+          replace={true}
+        ></Navigate>
+      )}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           <div className="lg:col-span-3">
@@ -273,6 +277,9 @@ function Checkout() {
                         <div className="min-w-0 flex-auto">
                           <p className="text-sm font-semibold leading-6 text-gray-900">
                             {address.name}
+                          </p>
+                          <p className="text-sm font-semibold leading-6 text-gray-900">
+                            {address.email}
                           </p>
                           <p className="mt-1 truncate text-xs leading-5 text-gray-500">
                             {address.street}
