@@ -2187,6 +2187,62 @@
         "pinCode": "201306"
       },
       "status": "pending"
+    },
+    {
+      "id": "e64d",
+      "items": [
+        {
+          "id": "31b5",
+          "title": "OPPOF19",
+          "description": "OPPO F19 is officially announced on April 2021.",
+          "price": 280,
+          "discountPercentage": 17.91,
+          "rating": 4.3,
+          "stock": 123,
+          "brand": "OPPO",
+          "category": "smartphones",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/4/1.jpg",
+            "https://cdn.dummyjson.com/product-images/4/2.jpg",
+            "https://cdn.dummyjson.com/product-images/4/3.jpg",
+            "https://cdn.dummyjson.com/product-images/4/4.jpg",
+            "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": "fc53"
+        }
+      ],
+      "totalAmount": 280,
+      "totalItems": 1,
+      "user": {
+        "id": "fc53",
+        "email": "ys892369@gmail.com",
+        "addresses": [
+          {
+            "name": "yogesh sharma",
+            "email": "ys892369@gmail.com",
+            "city": "Gbnagar",
+            "state": "Uttar Pradesh",
+            "pinCode": "201306",
+            "phone": "8810281959",
+            "street": "Newar road haldoni "
+          },
+          {
+            "name": "shakshi",
+            "email": "shakshi0931@gmail.com",
+            "phone": "9310530360",
+            "street": "dhobi wali gali noida gbn ",
+            "city": "Greater Noida",
+            "state": "Uttar Pradesh",
+            "pinCode": "201306"
+          }
+        ],
+        "password": "123456Yo"
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": null,
+      "status": "pending"
     }
   ]
 }
