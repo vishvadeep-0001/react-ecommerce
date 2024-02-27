@@ -2046,6 +2046,7 @@
     {
       "id": "fc53",
       "email": "ys892369@gmail.com",
+      "role": "user",
       "addresses": [
         {
           "name": "yogesh sharma",
@@ -2067,6 +2068,13 @@
         }
       ],
       "password": "123456Yo"
+    },
+    {
+      "id": "19db",
+      "email": "admin@gmail.com",
+      "password": "123456Yo",
+      "addresses": [],
+      "role": "admin"
     }
   ],
   "cart": [],
