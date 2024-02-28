@@ -1838,6 +1838,24 @@
         "https://cdn.dummyjson.com/product-images/100/3.jpg",
         "https://cdn.dummyjson.com/product-images/100/thumbnail.jpg"
       ]
+    },
+    {
+      "id": "1085",
+      "title": "Mac Book Air 2024",
+      "description": "Mac Book Air 2024 this laptop launch in 2024. I hope you guy's love this apple product.",
+      "brands": "Apple",
+      "category": "smartphones",
+      "price": "120000",
+      "discountPercentage": "10",
+      "stock": "120",
+      "thumbnail": "Mac Book Air 2024",
+      "images": [
+        "Mac Book Air 2024/image1",
+        "Mac Book Air 2024/image2",
+        "Mac Book Air 2024/image3",
+        "Mac Book Air 2024"
+      ],
+      "rating": 0
     }
   ],
   "brands": [
