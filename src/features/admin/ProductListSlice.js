@@ -103,7 +103,7 @@ export const productSlice = createSlice({
   },
 });
 
-export const { increment } = productSlice.actions;
+// export const { increment } = productSlice.actions;
 
 
 //Selectors

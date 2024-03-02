@@ -1,23 +1,68 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectBrands, selectCategory } from "../ProductListSlice";
+import {
+  fetchProductByIdAsync,
+  selectBrands,
+  selectCategory,
+  selectProductById,
+} from "../ProductListSlice";
 import { useForm } from "react-hook-form";
-import { createProductAsync } from "../../product-list/ProductListSlice";
+import {
+  clearSelectedProduct,
+  createProductAsync,
+  updateProductAsync,
+} from "../../product-list/ProductListSlice";
+import { useParams } from "react-router-dom";
 
 const AdminProductForm = () => {
-  const dispatch = useDispatch();
-  const brands = useSelector(selectBrands);
-  const categories = useSelector(selectCategory);
   const {
     register,
     handleSubmit,
+    setValue,
+    reset,
     formState: { errors },
   } = useForm();
+
+  const dispatch = useDispatch();
+  const brands = useSelector(selectBrands);
+  const categories = useSelector(selectCategory);
+  const selectedProduct = useSelector(selectProductById);
+  const params = useParams();
+  console.log(selectedProduct);
+
+  useEffect(() => {
+    if (params.id) {
+      dispatch(fetchProductByIdAsync(params.id));
+    } else {
+      dispatch(clearSelectedProduct());
+    }
+  }, [params.id, dispatch]);
+
+  useEffect(() => {
+    if (selectedProduct && params.id) {
+      setValue("title", selectedProduct.title);
+      setValue("description", selectedProduct.description);
+      setValue("brand", selectedProduct.brand);
+      setValue("category", selectedProduct.category);
+      setValue("discountPercentage", selectedProduct.discountPercentage);
+      setValue("stock", selectedProduct.stock);
+      setValue("price", selectedProduct.price);
+      setValue("thumbnail", selectedProduct.thumbnail);
+      setValue("image1", selectedProduct.images[1]);
+      setValue("image2", selectedProduct.images[2]);
+      setValue("image3", selectedProduct.images[3]);
+    }
+  }, [selectedProduct, setValue, params.id]);
+
+  const handleDelete=()=>{
+    const product = {...selectedProduct};
+    product.delete = true;
+    dispatch(updateProductAsync(product));
+  }
 
   return (
     <form
       onSubmit={handleSubmit((data) => {
-        console.log(data);
         const product = { ...data };
         product.images = [
           product.image1,
@@ -25,12 +70,21 @@ const AdminProductForm = () => {
           product.image3,
           product.thumbnail,
         ];
-        product.rating = 0;
         delete product["image1"];
         delete product["image2"];
         delete product["image3"];
-        console.log(product);
-        dispatch(createProductAsync(product));
+        product.price = +product.price;
+        product.stock = +product.stock;
+        product.discountPercentage = +product.discountPercentage;
+
+        if (params.id) {
+          product.id = params.id; 
+          dispatch(updateProductAsync(product));
+          product.rating = selectedProduct.rating || 0;
+          reset();
+        } else {
+          dispatch(createProductAsync(product));
+        }
       })}
     >
       <div className="space-y-12 bg-white p-12">
@@ -48,7 +102,7 @@ const AdminProductForm = () => {
                 Title
               </label>
               <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
+                <div className="flex rounded-md shadow-sm ring-1 ring-inset focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
                   <input
                     type="text"
                     {...register("title", {
@@ -136,7 +190,7 @@ const AdminProductForm = () => {
                 Price
               </label>
               <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
+                <div className="flex rounded-md shadow-sm ring-1 ring-inset focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
                   <input
                     type="number"
                     {...register("price", {
@@ -158,7 +212,7 @@ const AdminProductForm = () => {
                 Discount Percentage
               </label>
               <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
+                <div className="flex rounded-md shadow-sm ring-1 ring-inset focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
                   <input
                     type="number"
                     {...register("discountPercentage", {
@@ -181,7 +235,7 @@ const AdminProductForm = () => {
                 Stock
               </label>
               <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
+                <div className="flex rounded-md shadow-sm ring-1 ring-inset focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
                   <input
                     type="number"
                     {...register("stock", {
@@ -203,7 +257,7 @@ const AdminProductForm = () => {
                 Thumbnail
               </label>
               <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
+                <div className="flex rounded-md shadow-sm ring-1 ring-inset focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
                   <input
                     type="text"
                     {...register("thumbnail", {
@@ -224,7 +278,7 @@ const AdminProductForm = () => {
                 Image 1
               </label>
               <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
+                <div className="flex rounded-md shadow-sm ring-1 ring-inset focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
                   <input
                     type="text"
                     {...register("image1", {
@@ -245,7 +299,7 @@ const AdminProductForm = () => {
                 Image 2
               </label>
               <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
+                <div className="flex rounded-md shadow-sm ring-1 ring-inset focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
                   <input
                     type="text"
                     {...register("image2", {
@@ -266,7 +320,7 @@ const AdminProductForm = () => {
                 Image 3
               </label>
               <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
+                <div className="flex rounded-md shadow-sm ring-1 ring-inset focus-within:ring-2 focus-within:ring-inset ring-gray-300 focus-within:ring-indigo-600">
                   <input
                     type="text"
                     {...register("image3", {
@@ -282,6 +336,13 @@ const AdminProductForm = () => {
         </div>
       </div>
       <div className="mt-6 flex items-center justify-end gap-x-6">
+      <button
+          type="submit"
+          className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          onClick={handleDelete}
+        >
+          Delete
+        </button>
         <button
           type="button"
           className="text-sm font-semibold leading-6 text-gray-900"

@@ -8,7 +8,7 @@ export function fetchAllProducts() {
 
 export function fetchProductById(id) {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8080/products/"+id);
+    const response = await fetch("http://localhost:8080/products/" + id);
     const data = await response.json();
     resolve({ data });
   });
@@ -24,7 +24,7 @@ export function fetchProductsByFilters(filter, sort) {
       queryString += `${key}=${filter[key]}&`;
     }
   }
-  for(let key in sort){
+  for (let key in sort) {
     queryString += `${key}=${sort[key]}&`;
   }
   return new Promise(async (resolve) => {
@@ -36,7 +36,6 @@ export function fetchProductsByFilters(filter, sort) {
   });
 }
 
-
 // fetch product by category
 
 export function fetchCategories() {
@@ -46,7 +45,6 @@ export function fetchCategories() {
     resolve({ data });
   });
 }
-
 
 export function fetchBrands() {
   return new Promise(async (resolve) => {

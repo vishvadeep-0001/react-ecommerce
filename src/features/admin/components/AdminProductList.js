@@ -362,9 +362,10 @@ export default function AdminProductList() {
               {/* Product grid */}
               <div className="lg:col-span-3">
                 <div>
-                  <Link 
-                  to="/admin/productform"
-                  className="rounded-md mx-10 my-2 bg-green-600 px-3 py-2 text-sm font-semibold text-white">
+                  <Link
+                    to="/admin/productform"
+                    className="rounded-md mx-10 my-2 bg-green-600 px-3 py-2 text-sm font-semibold text-white"
+                  >
                     Add New Product
                   </Link>
                 </div>
@@ -419,12 +420,23 @@ export default function AdminProductList() {
                                   </p>
                                 </div>
                               </div>
+                              {console.log(product.delete)}
+                              {product.delete && (
+                                <div>
+                                  <p className="text-sm text-red-400">
+                                    Product Deleted
+                                  </p>
+                                </div>
+                              )}
                             </div>
                           </Link>
-                          <div>
-                            <button className="rounded-md my-2 bg-indigo-500 px-3 py-2 text-sm font-semibold text-white">
+                          <div className="mt-3">
+                            <Link
+                              to={`/admin/productform/edit/${product.id}`}
+                              className="rounded-md my-2 bg-indigo-500 px-3 py-2 text-sm font-semibold text-white"
+                            >
                               Edit Product
-                            </button>
+                            </Link>
                           </div>
                         </div>
                       ))}
