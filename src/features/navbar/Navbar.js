@@ -13,14 +13,13 @@ import { selectLoggedInUser } from "../auth/authSlice";
 
 
 const navigation = [
-  { name: "E-Commerce", link: "#", user: true },
-  { name: "Team", link: "#", user: true },
-  { name: "Admin", link: "/admin", admin: true },
+  { name: "Products", link: "/", user: true },
+  { name: "Products", link: "/admin", admin: true },
   { name: "Orders", link: "/admin/orders", admin: true },
 ];
+
 const userNavigation = [
   { name: "My Profile", link: "/profile" },
-
   { name: "My Orders", link: "/orders" },
   { name: "Sign out", link: "/logout" },
 ];

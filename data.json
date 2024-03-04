@@ -7,7 +7,7 @@
       "price": 250000,
       "discountPercentage": 12,
       "rating": 0,
-      "stock": 94,
+      "stock": 0,
       "brand": "Apple",
       "category": "smartphones",
       "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
@@ -2097,37 +2097,63 @@
       "role": "admin"
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "id": "18cc",
+      "title": "iPhone X",
+      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+      "price": 1200,
+      "discountPercentage": 17,
+      "rating": 4.44,
+      "stock": 34,
+      "brand": "Apple",
+      "category": "smartphones",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/2/2.jpg",
+        "https://cdn.dummyjson.com/product-images/2/3.jpg",
+        "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+        "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+      ],
+      "brands": "Apple",
+      "productId": "2",
+      "quantity": 1,
+      "user": "fc53"
+    }
+  ],
   "orders": [
     {
-      "id": "4012",
+      "id": "c46b",
       "items": [
         {
-          "id": "b0d4",
-          "title": "Skin Beauty Serum.",
-          "description": "Product name: rorec collagen hyaluronic acid white face serum riceNet weight: 15 m",
-          "price": 46,
-          "discountPercentage": 10.68,
-          "rating": 4.42,
-          "stock": 54,
-          "brand": "ROREC White Rice",
-          "category": "skincare",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/19/thumbnail.jpg",
+          "id": "80c7",
+          "title": "iPhone 9",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 250000,
+          "discountPercentage": 12,
+          "rating": 0,
+          "stock": 0,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
           "images": [
-            "https://cdn.dummyjson.com/product-images/19/1.jpg",
-            "https://cdn.dummyjson.com/product-images/19/2.jpg",
-            "https://cdn.dummyjson.com/product-images/19/3.png",
-            "https://cdn.dummyjson.com/product-images/19/thumbnail.jpg"
+            "https://cdn.dummyjson.com/product-images/1/4.jpg",
+            "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+            "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+            "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
           ],
+          "brands": "Apple",
+          "delete": true,
           "quantity": 1,
           "user": "fc53"
         }
       ],
-      "totalAmount": 46,
+      "totalAmount": 250000,
       "totalItems": 1,
       "user": {
         "id": "fc53",
         "email": "ys892369@gmail.com",
+        "role": "user",
         "addresses": [
           {
             "name": "yogesh sharma",
@@ -2137,6 +2163,15 @@
             "pinCode": "201306",
             "phone": "8810281959",
             "street": "Newar road haldoni "
+          },
+          {
+            "name": "shakshi",
+            "email": "shakshi0931@gmail.com",
+            "phone": "9310530360",
+            "street": "dhobi wali gali noida gbn ",
+            "city": "Greater Noida",
+            "state": "Uttar Pradesh",
+            "pinCode": "201306"
           }
         ],
         "password": "123456Yo"
@@ -2151,37 +2186,39 @@
         "phone": "8810281959",
         "street": "Newar road haldoni "
       },
-      "status": "pending"
+      "status": "cancelled"
     },
     {
-      "id": "0040",
+      "id": "8458",
       "items": [
         {
-          "id": "5812",
-          "title": "Leather Strap Skeleton Watch",
-          "description": "Leather Strap Skeleton Watch for Men - Stylish and Latest Design",
-          "price": 46,
-          "discountPercentage": 10.2,
-          "rating": 4.98,
-          "stock": 61,
-          "brand": "Strap Skeleton",
-          "category": "mens-watches",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/64/thumbnail.jpg",
+          "id": "e883",
+          "title": "Plastic Table",
+          "description": "V﻿ery good quality plastic table for multi purpose now in reasonable price",
+          "price": 50,
+          "discountPercentage": 4,
+          "rating": 4.01,
+          "stock": 136,
+          "brand": "Multi Purpose",
+          "category": "furniture",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/34/thumbnail.jpg",
           "images": [
-            "https://cdn.dummyjson.com/product-images/64/1.jpg",
-            "https://cdn.dummyjson.com/product-images/64/2.webp",
-            "https://cdn.dummyjson.com/product-images/64/3.jpg",
-            "https://cdn.dummyjson.com/product-images/64/thumbnail.jpg"
+            "https://cdn.dummyjson.com/product-images/34/1.jpg",
+            "https://cdn.dummyjson.com/product-images/34/2.jpg",
+            "https://cdn.dummyjson.com/product-images/34/3.jpg",
+            "https://cdn.dummyjson.com/product-images/34/4.jpg",
+            "https://cdn.dummyjson.com/product-images/34/thumbnail.jpg"
           ],
           "quantity": 1,
           "user": "fc53"
         }
       ],
-      "totalAmount": 46,
+      "totalAmount": 50,
       "totalItems": 1,
       "user": {
         "id": "fc53",
         "email": "ys892369@gmail.com",
+        "role": "user",
         "addresses": [
           {
             "name": "yogesh sharma",
@@ -2214,38 +2251,39 @@
         "state": "Uttar Pradesh",
         "pinCode": "201306"
       },
-      "status": "pending"
+      "status": "delivered"
     },
     {
-      "id": "e64d",
+      "id": "15c5",
       "items": [
         {
-          "id": "31b5",
-          "title": "OPPOF19",
-          "description": "OPPO F19 is officially announced on April 2021.",
-          "price": 280,
-          "discountPercentage": 17.91,
-          "rating": 4.3,
-          "stock": 123,
-          "brand": "OPPO",
-          "category": "smartphones",
-          "thumbnail": "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg",
+          "id": "bc14",
+          "title": "Hyaluronic Acid Serum",
+          "description": "L'OrÃ©al Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid",
+          "price": 19,
+          "discountPercentage": 13.31,
+          "rating": 4.83,
+          "stock": 110,
+          "brand": "L'Oreal Paris",
+          "category": "skincare",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/16/thumbnail.jpg",
           "images": [
-            "https://cdn.dummyjson.com/product-images/4/1.jpg",
-            "https://cdn.dummyjson.com/product-images/4/2.jpg",
-            "https://cdn.dummyjson.com/product-images/4/3.jpg",
-            "https://cdn.dummyjson.com/product-images/4/4.jpg",
-            "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg"
+            "https://cdn.dummyjson.com/product-images/16/1.png",
+            "https://cdn.dummyjson.com/product-images/16/2.webp",
+            "https://cdn.dummyjson.com/product-images/16/3.jpg",
+            "https://cdn.dummyjson.com/product-images/16/4.jpg",
+            "https://cdn.dummyjson.com/product-images/16/thumbnail.jpg"
           ],
           "quantity": 1,
           "user": "fc53"
         }
       ],
-      "totalAmount": 280,
+      "totalAmount": 19,
       "totalItems": 1,
       "user": {
         "id": "fc53",
         "email": "ys892369@gmail.com",
+        "role": "user",
         "addresses": [
           {
             "name": "yogesh sharma",
@@ -2268,8 +2306,16 @@
         ],
         "password": "123456Yo"
       },
-      "paymentMethod": "cash",
-      "selectedAddress": null,
+      "paymentMethod": "card",
+      "selectedAddress": {
+        "name": "yogesh sharma",
+        "email": "ys892369@gmail.com",
+        "city": "Gbnagar",
+        "state": "Uttar Pradesh",
+        "pinCode": "201306",
+        "phone": "8810281959",
+        "street": "Newar road haldoni "
+      },
       "status": "pending"
     }
   ]

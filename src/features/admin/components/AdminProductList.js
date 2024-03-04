@@ -420,11 +420,17 @@ export default function AdminProductList() {
                                   </p>
                                 </div>
                               </div>
-                              {console.log(product.delete)}
                               {product.delete && (
                                 <div>
                                   <p className="text-sm text-red-400">
                                     Product Deleted
+                                  </p>
+                                </div>
+                              )}
+                              {product.stock <= 0 && (
+                                <div>
+                                  <p className="text-sm text-red-400">
+                                    Out Of Stock
                                   </p>
                                 </div>
                               )}

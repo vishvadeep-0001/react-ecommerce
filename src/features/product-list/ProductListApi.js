@@ -43,7 +43,7 @@ export function updateProduct(update) {
 }
 
 
-export function fetchProductsByFilters(filter, sort) {
+export function fetchProductsByFilters(filter, sort, pagination) {
   let queryString = "";
   for (let key in filter) {
     const categoryValues = filter[key];
