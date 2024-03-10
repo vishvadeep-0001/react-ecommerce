@@ -2,14 +2,21 @@ import React from "react";
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { deleteItemFromCartAsync, selectItems, updateCartAsync } from "../cartSlice";
+import {
+  deleteItemFromCartAsync,
+  selectItems,
+  updateCartAsync,
+} from "../cartSlice";
 import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Modal from "../../common/Modal";
 
 export function Cart() {
   const [open, setOpen] = useState(true);
   const items = useSelector(selectItems);
-
+  console.log("items", items);
+  const [openModal, setOpenModal] = useState(null);
+  
   const totalAmount = items.reduce(
     (amount, item) => item.price * item.quantity + amount,
     0
@@ -19,7 +26,7 @@ export function Cart() {
   const dispatch = useDispatch();
 
   const handleQuantity = (e, item) => {
-    dispatch(updateCartAsync({ ...item, quantity: +e.target.value }));
+    dispatch(updateCartAsync({ id: item.id, quantity: +e.target.value }));
   };
   const handleRemove = (e, id) => {
     dispatch(deleteItemFromCartAsync(id));
@@ -27,7 +34,7 @@ export function Cart() {
 
   return (
     <>
-    {!items.length > 0 && <Navigate to="/" replace={true}></Navigate>}
+      {!items.length > 0 && <Navigate to="/" replace={true}></Navigate>}
       <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
           <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
@@ -39,8 +46,8 @@ export function Cart() {
                 <li key={item.id} className="flex py-6">
                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                     <img
-                      src={item.thumbnail}
-                      alt={item.imageAlt}
+                      src={item.product.thumbnail}
+                      alt={item.product.title}
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
@@ -49,11 +56,13 @@ export function Cart() {
                     <div>
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <h3>
-                          <Link to={item.href}>{item.name}</Link>
+                          <Link to={item.product.id}>{item.title}</Link>
                         </h3>
                         <p className="ml-4">{item.price}</p>
                       </div>
-                      <p className="mt-1 text-sm text-gray-500">{item.brand}</p>
+                      <p className="mt-1 text-sm text-gray-500">
+                        {item.product.brand}
+                      </p>
                     </div>
                     <div className="flex flex-1 items-end justify-between text-sm">
                       <div className="text-gray-500">
@@ -79,6 +88,15 @@ export function Cart() {
                       </div>
 
                       <div className="flex">
+                        <Modal
+                          title={`Delete ${item.product.title}`}
+                          message="Are you sure you want to delete this Cart item ?"
+                          dangerOption="Delete"
+                          cancelOption="Cancel"
+                          dangerAction={(e) => handleRemove(e, item.id)}
+                          cancelAction={() => setOpenModal(null)}
+                          showModal={openModal === item.id}
+                        ></Modal>
                         <button
                           onClick={(e) => handleRemove(e, item.id)}
                           type="button"

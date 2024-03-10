@@ -66,7 +66,7 @@ export default function ProductList() {
   ];
 
   const handleFilter = (e, section, option) => {
-    console.log(e.target.checked);
+    
     const newFilter = { ...filter };
     if (e.target.checked) {
       if (newFilter[section.id]) {
@@ -80,18 +80,18 @@ export default function ProductList() {
       );
       newFilter[section.id].splice(index, 1);
     }
-    console.log({ newFilter });
+    
     setFilter(newFilter);
   };
 
   const handleSort = (e, option) => {
     const sort = { _sort: option.sort, _order: option.order };
     setSort(sort);
-    console.log({ sort });
+    
   };
 
   const handlePage = (page) => {
-    console.log({ page });
+    
     setPage(page);
   };
 
@@ -430,7 +430,7 @@ export default function ProductList() {
                                 </p>
                               </div>
                             )}
-                            {console.log("product", product)}
+                            
                             {product.stock <=0 && (
                               <div>
                                 <p className="text-sm text-red-400">
